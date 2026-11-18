@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --background: #020617;
+  --foreground: #f8fafc;
 }
 
 @theme inline {
@@ -12,15 +13,84 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  min-height: 100%;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.hmi-theme {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.theme-dark {
+  color-scheme: dark;
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+.theme-light {
+  color-scheme: light;
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+}
+
+/* Light theme translations for the existing Tailwind slate palette. */
+.theme-light .bg-slate-950 { background-color: #e2e8f0 !important; }
+.theme-light .bg-slate-900 { background-color: #ffffff !important; }
+.theme-light .bg-slate-900\/70 { background-color: rgb(255 255 255 / 0.92) !important; }
+.theme-light .bg-slate-800 { background-color: #f1f5f9 !important; }
+
+.theme-light .text-white { color: #0f172a !important; }
+.theme-light .text-slate-200 { color: #1e293b !important; }
+.theme-light .text-slate-300 { color: #334155 !important; }
+.theme-light .text-slate-400 { color: #64748b !important; }
+.theme-light .text-slate-500 { color: #64748b !important; }
+
+.theme-light .border-slate-800 { border-color: #cbd5e1 !important; }
+.theme-light .border-slate-700 { border-color: #cbd5e1 !important; }
+
+.theme-light .hmi-theme,
+.theme-light main {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.theme-light input {
+  color-scheme: light;
+}
+
+.theme-light input.bg-slate-950 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.theme-light .shadow-lg,
+.theme-light .shadow-2xl {
+  box-shadow: 0 10px 30px rgb(15 23 42 / 0.08);
+}
+
+/* Keep overlays readable in both themes. */
+.theme-light [role="alertdialog"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
